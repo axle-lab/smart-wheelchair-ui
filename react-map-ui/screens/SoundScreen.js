@@ -20,9 +20,15 @@ const styles = StyleSheet.create({
 		backgroundColor: "#eee",
 		alignItems: "center",
             flexDirection: "row",
+            flexWrap: 'wrap',
 		justifyContent: "center",
             position: 'absolute',
             right: 0,
             bottom: 0
-	}
+	},
+      video: {
+            alignSelf: 'stretch',
+            width: '80%',
+            height: '80%'
+      }
 })

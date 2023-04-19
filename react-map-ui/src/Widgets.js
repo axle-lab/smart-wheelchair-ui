@@ -8,6 +8,7 @@ import HomeScreen from "../screens/HomeScreen";
 import SpeedScreen from "../screens/SpeedSreen";
 import SoundScreen from "../screens/SoundScreen";
 import StatusScreen from "../screens/StatusScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -49,6 +50,14 @@ export default function Widgets() {
                               component={StatusScreen}
                               options={{
                                     title: "Status Control", 
+                                    headerShown: false
+                              }}
+                        />
+                        <Stack.Screen
+                              name="Settings"
+                              component={SettingsScreen}
+                              options={{
+                                    title: "Settings", 
                                     headerShown: false
                               }}
                         />

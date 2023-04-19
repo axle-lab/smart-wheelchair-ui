@@ -6,7 +6,7 @@ export default function HomeScreen({navigation}) {
       return (
             <View style={styles.container}>
                   <View style={styles.button1}>
-                        <Button style={styles.container}
+                        <Button
                               title="Speed"
                               onPress={() => navigation.navigate("Speed", { widget: "speed" })}
                         />
@@ -21,6 +21,12 @@ export default function HomeScreen({navigation}) {
                         <Button 
                               title="Status"
                               onPress={() => navigation.navigate("Status", { widget: "status" })}
+                        />
+                  </View> 
+                  <View style={styles.button3}>
+                        <Button 
+                              title="Settings"
+                              onPress={() => navigation.navigate("Settings", { widget: "settings" })}
                         />
                   </View> 
                   <StatusBar style="auto" />
