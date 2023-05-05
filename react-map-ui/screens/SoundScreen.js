@@ -7,7 +7,7 @@ export default function SoundScreen({ navigation, route }) {
             <View style={styles.container}>
                   <Text>Adjust the sound of the ipad!</Text>
                   <StatusBar style="auto" />
-                  <Button onPress={() => navigation.goBack()} title="Go back" />
+                  <Button onPress={() => navigation.navigate("Control")} title="Go back" />
             </View>
       );
 }
@@ -20,15 +20,9 @@ const styles = StyleSheet.create({
 		backgroundColor: "#eee",
 		alignItems: "center",
             flexDirection: "row",
-            flexWrap: 'wrap',
 		justifyContent: "center",
             position: 'absolute',
             right: 0,
             bottom: 0
-	},
-      video: {
-            alignSelf: 'stretch',
-            width: '80%',
-            height: '80%'
-      }
+	}
 })

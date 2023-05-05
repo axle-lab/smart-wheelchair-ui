@@ -12,7 +12,7 @@ import {
   Button
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import "../src/Global";
 
 const SECTIONS = [
   {
@@ -52,10 +52,18 @@ export default function SettingsScreen({ navigation, route })  {
     language: 'English',
     darkMode: true,
     wifi: false,
-    sound: false,
-    speed: false,
-    status: false,
+    speed: global.speedShown,
+    sound: global.soundShown,
+    status: global.statusShown,
   });
+
+  const [widget, setWidget] = useState({
+    speed: global.speedShown,
+    sound: global.soundShown,
+    status: global.statusShown,
+  });
+
+  const {setSpeed, setSound, setStatus} = route.params;
 
 
   return (
@@ -63,7 +71,11 @@ export default function SettingsScreen({ navigation, route })  {
       <ScrollView contentContainerStyle={styles.subcontainer} scrollEnabled={true}>
         <View style={styles.header}>
             <StatusBar style="auto" />
-            <Button onPress={() => navigation.goBack()} title="Go back" />
+            {/* <Button onPress={() => {
+              navigation.navigate("Home", { widget: widget, name: "yuqi"}); 
+              console.log(widget)}} 
+              title="Go back" /> */}
+            <Button onPress={() => navigation.navigate("Control")} title="Go back" />
           <Text style={styles.title}>Settings</Text>
         </View>
 
@@ -130,7 +142,26 @@ export default function SettingsScreen({ navigation, route })  {
                           <Switch
                               value={form[id]}
                               onValueChange={
-                                value => setForm({...form, [id]: value})
+                                value => {
+                                  if (id == "sound") {
+                                    console.log(id + " value changed to " + value)
+                                    global.soundShown = value;
+                                    setSound(value);
+                                  }
+                                  else if (id == "speed") {
+                                    console.log(id + " value changed to " + value)
+                                    global.speedShown = value;
+                                    setSpeed(value);
+                                  }
+                                  else if (id == "status") {
+                                    console.log(id + " value changed to " + value)
+                                    global.statusShown = value;
+                                    setStatus(value);
+                                  }
+                                  setForm({...form, [id]: value});
+                                  setWidget({...widget, [id]: value});
+                                  // console.log(id + " value changed to " + value)
+                                }
                               }
                           />
                         )}

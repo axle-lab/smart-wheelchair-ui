@@ -9,15 +9,20 @@ import SpeedScreen from "../screens/SpeedSreen";
 import SoundScreen from "../screens/SoundScreen";
 import StatusScreen from "../screens/StatusScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import HomeScreen2 from "../screens/HomeScreen2";
+import "./Global";
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 // const AuthStack = createStackNavigator();
 
-export default function Widgets() {
+export default function Widgets({route}) {
       return (
            <NavigationContainer style={styles.container}>
+            <View>
+                  <Text>{global.myGlobalVariable}</Text>
+            </View>
                   <Stack.Navigator screenOptions={{
                         headerShown: true,
                         headerBackButtonMenuEnabled: false,
@@ -27,7 +32,17 @@ export default function Widgets() {
                         <Stack.Screen
                               name="Control"
                               component={HomeScreen}
-                              options={{title: "Control Panel"}}
+                              options={{
+                                    title: "Control Panel"
+                              }}
+                        />
+                        <Stack.Screen
+                              name="Home"
+                              component={HomeScreen2}
+                              options={{
+                                    title: "Home",
+                                    // headerShown: false
+                              }}
                         />
                         <Stack.Screen
                               name="Speed"

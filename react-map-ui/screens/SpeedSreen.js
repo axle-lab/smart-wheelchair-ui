@@ -7,7 +7,7 @@ export default function SpeedScreen({ navigation, route }) {
             <View style={styles.container}>
                   <Text>Adjust the speed of the wheelchair!</Text>
                   <StatusBar style="auto" />
-                  <Button onPress={() => navigation.goBack()} title="Go back" />
+                  <Button onPress={() => navigation.navigate("Control")} title="Go back" />
             </View>
       );
 }

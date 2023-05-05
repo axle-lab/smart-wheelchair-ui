@@ -1,32 +1,57 @@
 import * as React from "react";
-import { View, StyleSheet, Button } from "react-native";
+import { useState, useEffect } from 'react';
+import { View, StyleSheet, Button, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { useRoute } from "@react-navigation/native";
+import "../src/Global";
 
 export default function HomeScreen({navigation}) {
+      const route = useRoute({
+            name: "",
+            widget: {}
+      });
+      const [mySpeed, setMySpeed] = useState(global.speedShown);
+      const [mySound, setMySound] = useState(global.soundShown);
+      const [myStatus, setMyStatus] = useState(global.statusShown);
+
+      useEffect(() => {
+            setMySpeed(global.speedShown);
+      }, [global.speedShown]);
+
       return (
             <View style={styles.container}>
-                  <View style={styles.button1}>
-                        <Button
-                              title="Speed"
-                              onPress={() => navigation.navigate("Speed", { widget: "speed" })}
-                        />
-                  </View> 
-                  <View style={styles.button2}>
-                        <Button
-                              title="Sound"
-                              onPress={() => navigation.navigate("Sound", { widget: "sound" })}
-                        />
-                  </View> 
-                  <View style={styles.button3}>
-                        <Button 
-                              title="Status"
-                              onPress={() => navigation.navigate("Status", { widget: "status" })}
-                        />
-                  </View> 
+                  {
+                        mySpeed &&
+                        <View style={styles.button1}>
+                              <Button
+                                    title="Speed"
+                                    onPress={() => {console.log("speed status: " + mySpeed + global.speedShown + global.soundShown + global.statusShown); navigation.navigate("Speed", { widget: "speed" })}}
+                              />
+                        </View> 
+                  }
+                 {
+                        mySound &&
+                        <View style={styles.button2}>
+                              <Button
+                                    title="Sound"
+                                    onPress={() => navigation.navigate("Sound", { widget: "sound" })}
+                              />
+                        </View> 
+                  }
+                  {
+                        myStatus &&
+                        <View style={styles.button3}>
+                              <Button 
+                                    title="Status"
+                                    onPress={() => navigation.navigate("Status", { widget: "status" })}
+                              />
+                        </View> 
+                  }
+                  
                   <View style={styles.button3}>
                         <Button 
                               title="Settings"
-                              onPress={() => navigation.navigate("Settings", { widget: "settings" })}
+                              onPress={() => navigation.navigate("Settings", { setSpeed: setMySpeed, setSound: setMySound, setStatus: setMyStatus})}
                         />
                   </View> 
                   <StatusBar style="auto" />

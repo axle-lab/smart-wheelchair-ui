@@ -7,7 +7,7 @@ export default function StatusScreen({ navigation, route }) {
             <View style={styles.container}>
                   <Text>Check the status of the wheelchair!</Text>
                   <StatusBar style="auto" />
-                  <Button onPress={() => navigation.goBack()} title="Go back" />
+                  <Button onPress={() => navigation.navigate("Control")} title="Go back" />
             </View>
       );
 }
