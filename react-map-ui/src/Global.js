@@ -1,4 +1,4 @@
 global.myGlobalVariable = 'This is a global variable';
 global.speedShown = true;
-global.soundShown = false;
+global.soundShown = true;
 global.statusShown = true;

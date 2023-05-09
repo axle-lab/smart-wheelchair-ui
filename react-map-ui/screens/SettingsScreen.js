@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import "../src/Global";
+import styles from '../styles/screenStyles';
 
 const SECTIONS = [
   {
@@ -67,14 +68,10 @@ export default function SettingsScreen({ navigation, route })  {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.widgetContainer}>
       <ScrollView contentContainerStyle={styles.subcontainer} scrollEnabled={true}>
         <View style={styles.header}>
             <StatusBar style="auto" />
-            {/* <Button onPress={() => {
-              navigation.navigate("Home", { widget: widget, name: "yuqi"}); 
-              console.log(widget)}} 
-              title="Go back" /> */}
             <Button onPress={() => navigation.navigate("Control")} title="Go back" />
           <Text style={styles.title}>Settings</Text>
         </View>
@@ -185,129 +182,3 @@ export default function SettingsScreen({ navigation, route })  {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    width: '30%',
-    height: '85%',
-		backgroundColor: "#eee",
-		alignItems: "center",
-    flexDirection: "row",
-		justifyContent: "center",
-    position: 'absolute',
-    right: 0,
-    bottom: 0
-  },
-  subcontainer: {
-    paddingVertical: 24,
-  },
-  section: {
-    paddingTop: 12,
-  },
-  sectionHeader: {
-    paddingHorizontal: 24,
-    paddingVertical: 8,
-  },
-  sectionHeaderText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#a7a7a7',
-    textTransform: 'uppercase',
-    letterSpacing: 1.2,
-  },
-  sectionBody: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#e3e3e3',
-  },
-  header: {
-    paddingLeft: 24,
-    paddingRight: 24,
-    marginBottom: 12,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#1d1d1d',
-    marginBottom: 6,
-  },
-  subtitle: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#929292',
-  },
-  profile: {
-    padding: 16,
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#e3e3e3',
-  },
-  profileAvatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 9999,
-  },
-  profileName: {
-    marginTop: 12,
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#090909',
-  },
-  profileEmail: {
-    marginTop: 6,
-    fontSize: 16,
-    fontWeight: '400',
-    color: '#848484',
-  },
-  profileAction: {
-    marginTop: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#007bff',
-    borderRadius: 12,
-  },
-  profileActionText: {
-    marginRight: 8,
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#fff',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingRight: 24,
-    height: 50,
-  },
-  rowWrapper: {
-    paddingLeft: 24,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderColor: '#e3e3e3',
-  },
-  rowIcon: {
-    marginRight: 12,
-  },
-  rowLabel: {
-    fontSize: 17,
-    fontWeight: '500',
-    color: '#000',
-  },
-  rowValue: {
-    fontSize: 17,
-    color: '#616161',
-    marginRight: 4,
-  },
-  rowSpacer: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 0,
-  },
-});

@@ -2,6 +2,7 @@ import * as React from "react"
 import { Dimensions, StyleSheet, Text, View } from "react-native"
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete"
 import MapView, { Callout, Circle, Marker } from "react-native-maps"
+import styles from "../styles/styles";
 
 export default function Map() {
       
@@ -48,7 +49,7 @@ export default function Map() {
                         }}
                   />
                   <MapView
-                        style={styles.map}
+                        style={styles.mapContainer}
                         initialRegion={{
                               latitude: 37.78825,
                               longitude: -122.4324,
@@ -80,25 +81,4 @@ export default function Map() {
                   </MapView>
             </View>
       )
-      
-	
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-            width: '100%',
-		height: '85%',
-		padding: 5,
-		flexDirection: 'row',
-		flexWrap: 'wrap'
-	},
-	map: {
-            width: '100%',
-            height: '100%',
-            padding: 5
-	}
-})

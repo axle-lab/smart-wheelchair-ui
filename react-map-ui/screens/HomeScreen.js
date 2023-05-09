@@ -1,9 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, Button, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
+import { Button } from 'react-native-elements';
 import { StatusBar } from "expo-status-bar";
 import { useRoute } from "@react-navigation/native";
 import "../src/Global";
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import styles from "../styles/screenStyles";
+
 
 export default function HomeScreen({navigation}) {
       const route = useRoute({
@@ -19,38 +23,48 @@ export default function HomeScreen({navigation}) {
       }, [global.speedShown]);
 
       return (
-            <View style={styles.container}>
+            <View style={styles.homeContainer}>
                   {
                         mySpeed &&
-                        <View style={styles.button1}>
+                        <View style={styles.button}>
                               <Button
-                                    title="Speed"
+                                    title={<FeatherIcon color="#fff" name="sliders" size={20} />}
+                                    buttonStyle={styles.button}
+                                    titleStyle={styles.text}
                                     onPress={() => {console.log("speed status: " + mySpeed + global.speedShown + global.soundShown + global.statusShown); navigation.navigate("Speed", { widget: "speed" })}}
-                              />
+                              >
+                                    
+                              </Button>
                         </View> 
                   }
                  {
                         mySound &&
-                        <View style={styles.button2}>
+                        <View style={styles.button}>
                               <Button
-                                    title="Sound"
+                                    title={<FeatherIcon color="#fff" name="volume-1" size={20} />}
+                                    buttonStyle={styles.button}
+                                    titleStyle={styles.text}
                                     onPress={() => navigation.navigate("Sound", { widget: "sound" })}
                               />
                         </View> 
                   }
                   {
                         myStatus &&
-                        <View style={styles.button3}>
+                        <View style={styles.button}>
                               <Button 
-                                    title="Status"
+                                    title={<FeatherIcon color="#fff" name="battery" size={20} />}
+                                    buttonStyle={styles.button}
+                                    titleStyle={styles.text}
                                     onPress={() => navigation.navigate("Status", { widget: "status" })}
                               />
                         </View> 
                   }
                   
-                  <View style={styles.button3}>
+                  <View style={styles.button}>
                         <Button 
-                              title="Settings"
+                              title={<FeatherIcon color="#fff" name="settings" size={20} />}
+                              buttonStyle={styles.button}
+                              titleStyle={styles.text}
                               onPress={() => navigation.navigate("Settings", { setSpeed: setMySpeed, setSound: setMySound, setStatus: setMyStatus})}
                         />
                   </View> 
@@ -58,39 +72,3 @@ export default function HomeScreen({navigation}) {
             </View>
       );
 }
-
-
-const styles = StyleSheet.create({
-      container: {
-            flex: 1,
-		backgroundColor: "#eee",
-		alignItems: "center",
-		justifyContent: "center",
-            height: '100%',
-            flexDirection: 'row',
-	},
-      button1: {
-            flex: 1,
-            padding: 5,
-            borderRadius: 8,
-            paddingVertical: 1,
-            paddingHorizontal: 5,
-            backgroundColor: '#f01d71'
-      },
-      button2: {
-            flex: 1,
-            padding: 5,
-            borderRadius: 8,
-            paddingVertical: 1,
-            paddingHorizontal: 5,
-            backgroundColor: '#f01d71'
-      },
-      button3: {
-            flex: 1,
-            padding: 5,
-            borderRadius: 8,
-            paddingVertical: 1,
-            paddingHorizontal: 0,
-            backgroundColor: '#f01d71'
-      }
-})

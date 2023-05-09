@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Map from './src/Map'
 import Header from "./src/Header";
 import Box from "./src/Box";
-
+import styles from "./styles/styles";
 
 export default class App extends React.Component {
 	render() {
@@ -19,9 +19,3 @@ export default class App extends React.Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	}
-})
